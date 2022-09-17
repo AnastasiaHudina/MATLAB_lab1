@@ -1,0 +1,5 @@
+pitchDur = 1;
+fS=8000;
+timeArray=0:1/fS: pitchDur;
+audio= 261.63;
+diary off
