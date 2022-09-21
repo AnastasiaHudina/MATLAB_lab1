@@ -1,5 +1,8 @@
 pitchDur = 1;
 fS=8000;
+A=1;
+fi=0;
+f=261.63;
 timeArray=0:1/fS: pitchDur;
-audio= 261.63;
+audio= A*sind(2*pi*f*timeArray+fi);
 diary off
