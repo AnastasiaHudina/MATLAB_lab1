@@ -67,3 +67,14 @@ fprintf(formatSpec,wavFileRate,mp3FileRate);
 fprintf('\n');
 fprintf('%s', x4);
 fprintf('\n');
+%% disp
+X = sprintf('          %s VS %s', wavFileName, mp3FileName, '\n');
+Y = sprintf('          %s VS %s', wavFileCompMet, mp3FileCompMet, '\n');
+Z = sprintf('          %4.4f VS %4.4f', wavFileDur, mp3FileDur, '\n');
+G = sprintf('          %u VS %u', wavFileRate, mp3FileRate, '\n');
+disp(x1,'\n');
+disp(X);
+disp(Y);
+disp(Z);
+disp(G);
+disp(x4,'\n');
