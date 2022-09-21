@@ -47,3 +47,23 @@ mp3FileBitRate=audioMP3Info.BitRate;
 save('data.mat', 'mp3FileName','mp3FileBitRate','mp3FileCompMet', ...
     'mp3FileNumCh','mp3FileRate', 'mp3FileSamples', ...
     'mp3FileDur', 'mp3FileTitle', 'mp3FileArtist');
+%% fprintf
+x1="----------.MP3 VS .WAV----------";
+x2="          ";
+x3=" VS ";
+x4="------------------------------";
+fprintf('%s\n', x1);
+fprintf('%s', x2, wavFileName, x3, mp3FileName);
+fprintf('\n');
+fprintf('%s', x2, wavFileCompMet, x3, mp3FileCompMet);
+fprintf('\n');
+fprintf('%s', x2);
+formatSpec = '%4.4f VS %4.4f';
+fprintf(formatSpec,wavFileDur,mp3FileDur);
+fprintf('\n');
+fprintf('%s', x2);
+formatSpec = '%u VS %u';
+fprintf(formatSpec,wavFileRate,mp3FileRate);
+fprintf('\n');
+fprintf('%s', x4);
+fprintf('\n');
