@@ -25,3 +25,25 @@ sigSong=[pitchF pitchC pitchF pitchC pitchF pitchE pitchE ...
 sound(sigSong,fS);
 audiowrite('firstSong.wav',sigSong,fS);
 audioWavInfo=audioinfo('firstSong.wav');
+wavFileName=audioWavInfo.Filename;
+wavFileCompMet=audioWavInfo.CompressionMethod;
+wavFileNumCh=audioWavInfo.NumChannels;
+wavFileRate=audioWavInfo.SampleRate;
+wavFileSamples=audioWavInfo.TotalSamples;
+wavFileDur=audioWavInfo.Duration;
+%% Listen the mp3 file
+[sigSong,fS]=audioread('songi.mp3');
+sound(sigSong,fS);
+audioMP3Info=audioinfo('songi.mp3');
+mp3FileName=audioMP3Info.Filename;
+mp3FileCompMet=audioMP3Info.CompressionMethod;
+mp3FileNumCh=audioMP3Info.NumChannels;
+mp3FileRate=audioMP3Info.SampleRate;
+mp3FileSamples=audioMP3Info.TotalSamples;
+mp3FileDur=audioMP3Info.Duration;
+mp3FileTitle=audioMP3Info.Title;
+mp3FileArtist=audioMP3Info.Artist;
+mp3FileBitRate=audioMP3Info.BitRate;
+save('data.mat', 'mp3FileName','mp3FileBitRate','mp3FileCompMet', ...
+    'mp3FileNumCh','mp3FileRate', 'mp3FileSamples', ...
+    'mp3FileDur', 'mp3FileTitle', 'mp3FileArtist');
