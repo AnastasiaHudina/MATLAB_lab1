@@ -1,4 +1,4 @@
 %% extra task 2
 A1= randi(10, 3, 2);
-s1=(A1(1,1) + A1(2,1) +  A1(3,1)) * sind(2*pi*pitchVSfreq(2,1)*timeArray);
-s2=(A1(1,2) + A1(2,2) +  A1(3,2)) * sind(2*pi*pitchVSfreq(2,1)*timeArray);
+s1=(A1(1,1) + A1(2,1) +  A1(3,1)) * sin(2*pi*pitchVSfreq(2,1)*timeArray);
+s2=(A1(1,2) + A1(2,2) +  A1(3,2)) * sin(2*pi*pitchVSfreq(2,1)*timeArray);
