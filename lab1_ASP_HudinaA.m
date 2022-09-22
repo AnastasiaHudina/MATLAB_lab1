@@ -52,7 +52,6 @@ x1="----------.MP3 VS .WAV----------";
 x2="          ";
 x3=" VS ";
 x4="------------------------------";
-
 fprintf('%s\n', x1);
 fprintf('          %s VS %s\n', convertCharsToStrings(wavFileName), convertCharsToStrings(mp3FileName));
 fprintf('          %s VS %s\n', convertCharsToStrings(wavFileCompMet), convertCharsToStrings(mp3FileCompMet));
@@ -70,23 +69,39 @@ disp(Y);
 disp(Z);
 disp(G);
 disp(x4);
-
 %% EXTRA TASK 1
-%sigSong1=[pitchF pitchC pitchF pitchC pitchF pitchE pitchE];
-%sigSong2=[pitchE pitchC pitchE pitchC pitchE pitchF pitchF];
-%sigSong3=[pitchF pitchC pitchF pitchC pitchF pitchE pitchE];
-% sigSong4=[pitchE pitchC pitchE pitchC pitchF];
-% audiowrite('song1.wav',sigSong1,fS*10);
-% audiowrite('song2.wav',sigSong2,fS);
-% audiowrite('song3.wav',sigSong3,fS/10);
-% audiowrite('song4.wav',sigSong4,fS/100);
-% 
-% %% EXTRA TASK 2
-% A1= randi(20);
-% A2= randi(20);
-% A3= randi(20);
-% A4= randi(20);
-% A5= randi(20);
-% A6= randi(20);
-% s1=(A1+A2+A3) * sin(2*pi*pitchVSfreq(2,1)*timeArray);
-% s2=(A4+A5+A6) * sin(2*pi*pitchVSfreq(2,1)*timeArray);
+A=1;
+B=A-10;
+C=B-10;
+D=C-10;
+
+pitchC=A*sin(2*pi*pitchVSfreq(7,1)*timeArray+fi);
+pitchE=A*sin(2*pi*pitchVSfreq(5,1)*timeArray+fi);
+pitchF=A*sin(2*pi*pitchVSfreq(4,1)*timeArray+fi);
+sigSong1=[pitchF pitchC pitchF pitchC pitchF pitchE pitchE];
+audiowrite('song1.wav',sigSong1,fS);
+clear pitchC pitchE pitchF;
+
+pitchC=B*sin(2*pi*pitchVSfreq(7,1)*timeArray+fi);
+pitchE=B*sin(2*pi*pitchVSfreq(5,1)*timeArray+fi);
+pitchF=B*sin(2*pi*pitchVSfreq(4,1)*timeArray+fi);
+sigSong2=[pitchE pitchC pitchE pitchC pitchE pitchF pitchF];
+audiowrite('song2.wav',int16(sigSong2),fS);
+clear pitchC pitchE pitchF;
+
+pitchC=C*sin(2*pi*pitchVSfreq(7,1)*timeArray+fi);
+pitchE=C*sin(2*pi*pitchVSfreq(5,1)*timeArray+fi);
+pitchF=C*sin(2*pi*pitchVSfreq(4,1)*timeArray+fi);
+sigSong3=[pitchF pitchC pitchF pitchC pitchF pitchE pitchE];
+audiowrite('song3.wav',int16(sigSong3),fS);
+clear pitchC pitchE pitchF;
+
+pitchC=D*sin(2*pi*pitchVSfreq(7,1)*timeArray+fi);
+pitchE=D*sin(2*pi*pitchVSfreq(5,1)*timeArray+fi);
+pitchF=D*sin(2*pi*pitchVSfreq(4,1)*timeArray+fi);
+sigSong4=[pitchE pitchC pitchE pitchC pitchF];
+audiowrite('song4.wav',int16(sigSong4),fS);
+%% EXTRA TASK 2
+A1= randi(10, 3, 2);
+s1=(A1(1,1) + A1(2,1) +  A1(3,1)) * sin(2*pi*pitchVSfreq(2,1)*timeArray);
+s2=(A1(1,2) + A1(2,2) +  A1(3,2)) * sin(2*pi*pitchVSfreq(2,1)*timeArray);
