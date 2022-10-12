@@ -34,3 +34,4 @@ volumeMod=A*sin(2*pi*f*timeArray);
 volumeMod=volumeMod';
 sound(melody.*volumeMod, Fs);
 sound(melody.*(volumeMod.*volumeMod*2-1), Fs);
+%% Shorten melody
