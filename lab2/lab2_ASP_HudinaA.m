@@ -12,11 +12,11 @@ szBass=size(bass);
 Ts=1/Fs;
 dur=Ts*szBass(1);
 
-%another variant?
-%bassdur = length(bass)/Fs;
-%drumsdur = length(drums)/Fs;
-%synthsdur = length(synths)/Fs;
-%guitarsdur = length(guitars)/Fs;
+%another variant
+bassdur = length(bass)/Fs;
+drumsdur = length(drums)/Fs;
+synthsdur = length(synths)/Fs;
+guitarsdur = length(guitars)/Fs;
 %% Melody Matrix
 MelodyMatrix = [bass, drums, synths, guitars];
 tmpVector = ones(4,1);
@@ -52,9 +52,18 @@ sound(halfMelody,Fs)
 %point b
 halfMelody1 = melody(1:end/2, 1);
 %% 2-channel sound
+melodya = (melody>0);
+melodyb = (melody<=0);
+lmelodya=length(melodya);
+lmelodyb=length(melodyb);
+Fsa=lmelodya/bassdur;
+Fsb=lmelodyb/bassdur;
+sound(melodya,Fsa);
+sound(melodyb,Fsb);
 melody1 = melody.*(melody>0.5);
 melody2 = melody.*(melody<0.5);
 twochannel1 = [melody1, melody2];
 sound(twochannel1,Fs);
+
 twochannel2 = [melody flip(melody)];
 sound(twochannel2,Fs);
