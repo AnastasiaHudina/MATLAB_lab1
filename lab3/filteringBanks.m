@@ -14,11 +14,12 @@ function signalOut2 = convFilter(bBank, signal)
     sizeA = size(signal);
     if sizeA(1) < sizeA(2)
         for i = 1:sizeA(1)
-            signalOut2(i,:) = conv(signal(i,:), bBank);
+            signalOut2(i,:) = conv(signal(i,:), bBank); 
         end
     else
         for i = 1:sizeA(2)
             signalOut2(:,i) = conv(signal(:,i), bBank);
+            
         end
     end
 end

@@ -16,7 +16,6 @@ tic; signlout2 = filteringBanks(mp3, result, gain, 'convFilter', initB); toc;
 deviceWriter = audioDeviceWriter('SampleRate', fS);
 fileReader = dsp.AudioFileReader('Stronger.mp3');
 gain = [10 10 10 0.1*ones(1, 7)]';
-gain=ones(10,1);
 while ~isDone(fileReader)
     gain = rand(size(freqArray1))'; 
     audiodata = fileReader();

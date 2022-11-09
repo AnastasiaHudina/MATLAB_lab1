@@ -1,0 +1,111 @@
+%% Filters design
+freqArray = [31, 62, 125, 250, 500, 1000, 2000, 4000, 8000,16000];
+order = 1024; % должен быть четным
+fS = 44100;
+bBank = CreateFilters(freqArray, order, fS);
+nums = randperm(10,3);
+bTmp = bBank(nums, :);
+%частотную характеристику - это что?
+for i=1:3
+    [H(i, :), w(i, :)] = freqz(bTmp(i,:), 1, order);
+end
+x_db =@(x)20 * log10(x);
+H_db = x_db(abs(H));
+w = (w / pi) * (fS / 2);
+%% Graph with standard functions
+p1=plot(w(1, :),H_db(1, :), '-k', 'LineWidth', 1); hold on;
+p2=plot(w(2, :),H_db(2, :),':*b', 'LineWidth', 1);
+p3=plot(w(3, :),H_db(3, :),'-.rs', 'LineWidth', 1);
+grid on;
+title('Filters', 'FontSize', 16);
+xlabel('f, kHz', 'FontSize', 16);
+ylabel('|H|, dB', 'FontSize', 16);
+legend('№1', '№2', '№3');
+xlim([0, 21000]);
+ylim([-60, 10]);
+xticks([2000, 8000, 16000]);
+xticklabels({'2 khz', '8 khz', '16 khz'});
+%% Graph with changing object properties
+
+%% Graph with no formatting
+P1=plot(w(1, :), H_db(1, :)); hold on;
+P2=plot(w(2, :), H_db(2, :));
+P3=plot(w(3, :), H_db(3, :));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+not mine
+%% Graph with standard functions
+p1 = plot(w(1, :), H_db(1, :), '-k', 'LineWidth', 1); hold on;
+
+p2 = plot(w(2, :), H_db(2, :), ':*b', 'LineWidth', 1);
+
+p3 = plot(w(3, :), H_db(3, :), '-.rs',  'LineWidth', 1);
+
+xlim([0, 21000]);
+ylim([-60, 10]);
+
+legend(' N1', ' N2', ' N3');
+
+xticks([2000, 8000, 16000]);
+xticklabels({'2 khz', '8 khz', '16 khz'});
+
+title('Фильтры', 'FontSize', 16);
+xlabel('f, khz', 'FontSize', 16);
+ylabel('H, дБ', 'FontSize', 16);
+
+%% Graph with changing object properties
+f = figure('DefaultAxesFontSize', 14);
+ax = axes;
+
+P1=plot(w(1, :), H_db(1, :)); hold on;
+prop_names_P1 = {'LineWidth', 'LineStyle', 'Color'};
+prop_values_P1 = {1,'-','k'};
+set(P1, prop_names_P1, prop_values_P1);
+
+P2=plot(w(2, :), H_db(2, :));
+prop_names_P2 = {'LineWidth', 'LineStyle', 'Color', 'Marker'};
+prop_values_P2 = {1,'-','b', '*'};
+set(P2, prop_names_P2, prop_values_P2);
+
+P3=plot(w(3, :), H_db(3, :));
+prop_names_P3 = {'LineWidth', 'LineStyle', 'Color', 'Marker'};
+prop_values_P3 = {1,'-','r', 'S'};
+set(P3, prop_names_P3, prop_values_P3);
+
+
+prop_names = {'xlim', 'ylim','XTick', 'XTickLabel'};
+prop_values = {[0, 21000], [-60, 10], [2000, 8000, 16000],{'2 khz', '8 khz', '16 khz'}};
+set(ax, prop_names, prop_values);
+
+ax.XLabel.String = 'f, khz';
+ax.XLabel.FontSize = 16;
+ax.YLabel.String = 'H, дБ';
+ax.YLabel.FontSize = 16;
+ax.Title.String = 'Фильтры'; 
+lgd = legend(' N1', ' N2', ' N3');
+f.Position = [10 50 560 460];
+
+%% Graph with no formatting
+P1=plot(w(1, :), H_db(1, :)); hold on;
+P2=plot(w(2, :), H_db(2, :));
+P3=plot(w(3, :), H_db(3, :));
+
+
